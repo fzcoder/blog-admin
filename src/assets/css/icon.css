@@ -1,0 +1,620 @@
+.icon-document-48px {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background-image: url(../image/icon-document-48px.png);
+    background-size: 48px 48px;
+    background-repeat: no-repeat;
+}
+
+.icon-document-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-document-64px.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-author-success-48px {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background-image: url(../image/icon-author-success-48px.png);
+    background-size: 48px 48px;
+    background-repeat: no-repeat;
+}
+
+.icon-author-success-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-author-success-64px.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-mail-success-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-mail-success-64px.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-mail-primary-64px {
+    display: inline-block;
+    width: 72px;
+    height: 48px;
+    background-image: url(../image/icon-mail-primary-64px.png);
+    background-size: 72px 48px;
+    background-repeat: no-repeat;
+}
+
+.icon-mail-info-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-mail-info-64px.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-mail-warning-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-mail-warning-64px.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-mail-danger-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-mail-danger-64px.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-mail-64px {
+    display: inline-block;
+    width: 84px;
+    height: 64px;
+    background-image: url(../image/icon-mail-64px.png);
+    background-size: 84px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-password-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-password-64px.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-id-32px {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-image: url(../image/icon-id-32px.png);
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+}
+
+.icon-user-32px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-user-32px.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-user2-danger-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-user2-danger.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-logo-128px {
+    display: inline-block;
+    width: 40px;
+    height: 36px;
+    background-image: url(../image/logo.png);
+    background-size: 40px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-author-primary-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-author-primary.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-category-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-category.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-category2-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-category2.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-category3-success-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-category3-success.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-tag-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-tag.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-write-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-write.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-info-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-info.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-tool-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-tool.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-link-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-link.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-github-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(https://www.github.com/favicon.ico);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-QQ-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-QQ.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-wechat-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-wechat.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-webo-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-sina-webo.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-article-success-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-article-success.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-article-primary-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-article-primary.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-article-info-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-article-info.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-article-warning-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-article-warning.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-article-danger-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-article-danger.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-article2-success-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-article2-success.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-article2-primary-80px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-article2-primary.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-article2-info-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-article2-info.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-article2-warning-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-article2-warning.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-article2-danger-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-article2-danger.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-tag-success-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-tag-success.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-tag-primary-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-tag-primary.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-tag-warning-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-tag-warning.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-tag-danger-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-tag-danger.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+.icon-tag-info-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-tag-info.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+/* 第二组标签 */
+
+.icon-tag2-success-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-tag2-success.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-tag2-primary-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-tag2-primary.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-tag2-warning-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-tag2-warning.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-tag2-danger-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-tag2-danger.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+.icon-tag2-info-24px {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/icon-tag2-info.png);
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon-author-48px {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background-image: url(../image/icon-author.png);
+    background-size: 48px 48px;
+    background-repeat: no-repeat;
+}
+
+.icon-backtop-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-backtop.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-backtop2-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-backtop2.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-backtop3-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-backtop3.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-top-info-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-top-info.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-top-primary-32px {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-image: url(../image/icon-top-primary.png);
+    background-size: 28px 28px;
+    background-repeat: no-repeat;
+}
+
+.icon-index-primary-32px {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-image: url(../image/icon-index-primary.png);
+    background-size: 28px 28px;
+    background-repeat: no-repeat;
+}
+
+.icon-index-info-32px {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-image: url(../image/icon-index-info.png);
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+}
+
+.icon-link-primary-32px {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-image: url(../image/icon-link-primary.png);
+    background-size: 28px 28px;
+    background-repeat: no-repeat;
+}
+
+.icon-link-info-32px {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-image: url(../image/icon-link-info.png);
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+}
+
+.icon-link-warning-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-link-warning.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-calendar-primary-128px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-calendar-primary.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-user-primary-36px {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-image: url(../image/icon-user-primary.png);
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+}
+
+.icon-github-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-github.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-gitee-36px {
+    display: inline-block;
+    width: 46px;
+    height: 36px;
+    background-image: url(../image/icon-gitee.png);
+    background-size: 46px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-csdn-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-csdn.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-cnblogs-36px {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../image/icon-cnblogs.png);
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+}
+
+.icon-like {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-image: url(../image/icon-like-primary.png);
+    background-size: 28px 28px;
+    background-repeat: no-repeat;
+}
+
+.icon-setting-success-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-setting-success.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-setting-info-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-setting-info.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
+
+.icon-count-primary-64px {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../image/icon-count-primary.png);
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+}
