@@ -2,13 +2,13 @@
   <div class="content">
     <CategoryAdd
       :visible.sync="Switch.isCategoryAddDialogVisible"
-      @submit="Switch.isLinkAddDialogVisible = !Switch.isLinkAddDialogVisible"
+      @submit="handleSubmit()"
       @cancel="Switch.isCategoryAddDialogVisible = !Switch.isCategoryAddDialogVisible"
     ></CategoryAdd>
     <!-- 链接添加对话框 -->
     <LinkAdd
       :visible.sync="Switch.isLinkAddDialogVisible"
-      @submit="Switch.isLinkAddDialogVisible = !Switch.isLinkAddDialogVisible"
+      @submit="handleSubmit()"
       @cancel="Switch.isLinkAddDialogVisible = !Switch.isLinkAddDialogVisible"
     ></LinkAdd>
     <!-- 搜索区 -->
@@ -123,7 +123,7 @@ export default {
         this.Switch.isLinkAddDialogVisible = true
       }
     },
-    // 获取文章列表
+    // 获取列表
     async getList () {
       const { data: result } = await this.$http.post(
         this.query.url,
@@ -137,6 +137,25 @@ export default {
       this.query.body.pageNum = result.data.current
       this.query.body.pageSize = result.data.size
       this.total = result.data.total
+    },
+    // 处理提交成功事件
+    handleSubmit () {
+      if (this.type === 'category') {
+        // 关闭 Dialog
+        this.Switch.isCategoryAddDialogVisible = !this.Switch.isCategoryAddDialogVisible
+        // 消息提示
+        this.$message.success('目录添加成功！')
+        // 重新获取列表
+        this.getList()
+      }
+      if (this.type === 'link') {
+        // 关闭 Dialog
+        this.Switch.isLinkAddDialogVisible = !this.Switch.isLinkAddDialogVisible
+        // 消息提示
+        this.$message.success('链接添加成功！')
+        // 重新获取列表
+        this.getList()
+      }
     }
   }
 }
