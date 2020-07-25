@@ -1,21 +1,21 @@
 <template>
-  <div>
+  <div class="container">
     <!-- 面包屑导航区域 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/admin' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>网站设置</el-breadcrumb-item>
     </el-breadcrumb>
-    <el-card shadow="never">
+    <div class="base-setting">
+      <h4># 基本设置</h4>
       <el-form :model="websiteInfoForm" :rules="websiteInfoFormRules" ref="websiteInfoFormRef">
-        <h4>基本信息</h4>
         <el-form-item label="网站名称" prop="brand">
-          <el-input type="text" v-model="websiteInfoForm.brand"></el-input>
+          <el-input type="text" v-model="websiteInfoForm.brand" clearable></el-input>
         </el-form-item>
         <el-form-item label="版权信息" prop="copyright">
-          <el-input type="text" v-model="websiteInfoForm.copyright"></el-input>
+          <el-input type="text" v-model="websiteInfoForm.copyright" clearable></el-input>
         </el-form-item>
         <el-form-item label="备案信息" prop="beian">
-          <el-input type="text" v-model="websiteInfoForm.beianInfo"></el-input>
+          <el-input type="text" v-model="websiteInfoForm.beianInfo" clearable></el-input>
         </el-form-item>
         <el-form-item label="声明信息" prop="statement">
           <el-input type="textarea" v-model="websiteInfoForm.statement"></el-input>
@@ -25,17 +25,20 @@
           <el-button type="primary" round icon="el-icon-refresh" @click="cancelInfo()">取消</el-button>
         </div>
       </el-form>
-    </el-card>
-    <Carousel v-if="false"></Carousel>
+    </div>
+    <div class="index-setting">
+      <h4># 首页设置</h4>
+      <IndexSetting></IndexSetting>
+    </div>
   </div>
 </template>
 
 <script>
-import Carousel from '@/components/admin/setting/Carousel.vue'
+import IndexSetting from '@/components/admin/setting/IndexSetting.vue'
 export default {
   name: 'Setting',
   components: {
-    Carousel
+    IndexSetting
   },
   data () {
     return {
