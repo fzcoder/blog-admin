@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from './store'
 import './assets/css/global.css'
 import './assets/css/icon.css'
+import './assets/css/color.css'
 import './plugins/element.js'
 import './plugins/clipboard.js'
 import './plugins/MavonEditor.js'
@@ -12,7 +14,7 @@ import { Loading } from 'element-ui'
 
 let loading
 // 配置请求的根路径
-axios.defaults.baseURL = 'http://192.168.1.106:8081/api'
+axios.defaults.baseURL = 'http://localhost:8081/api'
 // axios请求拦截器
 axios.interceptors.request.use(config => {
   loading = Loading.service({
@@ -34,5 +36,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

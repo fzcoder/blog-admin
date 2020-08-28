@@ -1,28 +1,29 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// 管理员登录界面
-// import Login from '@/view/Login.vue'
+
+// 登录界面
 const Login = () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
 // 后台管理主体视图区
-// import Admin from '@/view/Admin.vue'
-const Admin = () => import(/* webpackChunkName: "admin" */ '@/views/Admin.vue')
-// import Dashboard from '@/view/admin/Dashboard.vue'
+const Main = () => import(/* webpackChunkName: "main" */ '@/views/Main.vue')
+// 主页
+const Index = () => import(/* webpackChunkName: "main" */ '@/views/main/Index.vue')
+// 个人中心
 const Home = () => import(/* webpackChunkName: "admin-dashboard" */ '@/views/admin/Home.vue')
-// import Article from '@/view/admin/Article.vue'
+// 文章管理
 const Article = () => import(/* webpackChunkName: "admin-article" */ '@/views/admin/Article.vue')
-// import ArticleWrite from '@/components/admin/article/Write.vue'
+// 创建文章
 const ArticleWrite = () => import(/* webpackChunkName: "admin-article" */ '@/views/admin/article/Write.vue')
-// import ArticleUpdate from '@/components/admin/article/Update.vue'
+// 修改文章
 const ArticleUpdate = () => import(/* webpackChunkName: "admin-article" */ '@/views/admin/article/Update.vue')
-// import Category from '@/view/admin/Category.vue'
+// 目录管理
 const Category = () => import(/* webpackChunkName: "admin-category" */ '@/views/admin/Category.vue')
-// import Link from '@/view/admin/Link.vue'
+// 链接管理
 const Link = () => import(/* webpackChunkName: "admin-link" */ '@/views/admin/Link.vue')
-// import Count from '@/view/admin/Count.vue'
+// 统计数据
 const Count = () => import(/* webpackChunkName: "admin-count" */ '@/views/admin/Count.vue')
-// import Setting from '@/view/admin/Setting.vue'
+// 设置
 const Setting = () => import(/* webpackChunkName: "admin-setting" */ '@/views/admin/Setting.vue')
-// import NotFound from '@/view/404.vue'
+// 错误页面
 const NotFound = () => import(/* webpackChunkName: "404" */ '@/views/404.vue')
 
 Vue.use(Router)
@@ -31,22 +32,27 @@ const router = new Router({
   // 开启历史模式
   // mode: 'history',
   routes: [
-    { path: '/', redirect: '/login' },
-    { path: '/login', component: Login, meta: { requireLogin: false } },
-    { path: '/admin',
-      component: Admin,
+    // 主界面
+    {
+      path: '/',
+      component: Main,
       meta: { requireLogin: true },
       children: [
-        { path: '', component: Home, meta: { requireLogin: true } },
-        { path: '/admin/article', component: Article, meta: { requireLogin: true } },
-        { path: '/admin/category', component: Category, meta: { requireLogin: true } },
-        { path: '/admin/link', component: Link, meta: { requireLogin: true } },
-        { path: '/admin/count', component: Count, meta: { requireLogin: true } },
-        { path: '/admin/setting', component: Setting, meta: { requireLogin: true } }
+        { path: '', component: Index, meta: { requireLogin: true } },
+        { path: '/article', component: Article, meta: { requireLogin: true } },
+        { path: '/category', component: Category, meta: { requireLogin: true } },
+        { path: '/link', component: Link, meta: { requireLogin: true } },
+        { path: '/user', component: Home, meta: { requireLogin: true } },
+        { path: '/data', component: Count, meta: { requireLogin: true } },
+        { path: '/setting', component: Setting, meta: { requireLogin: true } }
       ]
     },
-    { path: '/admin/article/write', component: ArticleWrite, meta: { requireLogin: true } },
-    { path: '/admin/article/update/:id', component: ArticleUpdate, meta: { requireLogin: true } },
+    // 文章编辑页面
+    { path: '/article/write', component: ArticleWrite, meta: { requireLogin: true } },
+    { path: '/article/update/:id', component: ArticleUpdate, meta: { requireLogin: true } },
+    // 登录界面
+    { path: '/login', component: Login, meta: { requireLogin: false } },
+    // 错误界面
     { path: '*', component: NotFound }
   ]
 })

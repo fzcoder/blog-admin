@@ -56,6 +56,13 @@ import { CollapseItem } from 'element-ui'
 import { Timeline } from 'element-ui'
 import { TimelineItem } from 'element-ui'
 
+// 返回顶部
+import { Backtop } from 'element-ui'
+
+// 下拉菜单
+import { Dropdown } from 'element-ui'
+import { DropdownItem } from 'element-ui'
+
 Vue.use(Button)
 Vue.use(Container)
 Vue.use(Header)
@@ -101,6 +108,9 @@ Vue.use(Cascader)
 Vue.use(DatePicker)
 Vue.use(Timeline)
 Vue.use(TimelineItem)
+Vue.use(Backtop)
+Vue.use(Dropdown)
+Vue.use(DropdownItem)
 
 // 挂载弹框提示组件
 Vue.prototype.$message = Message

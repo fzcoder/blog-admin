@@ -114,7 +114,7 @@ export default {
     // 监听添加请求
     handleAdd () {
       if (this.type === 'article') {
-        this.$router.push('/admin/article/write')
+        this.$router.push('/article/write')
       }
       if (this.type === 'category') {
         this.Switch.isCategoryAddDialogVisible = true

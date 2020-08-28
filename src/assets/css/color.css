@@ -1,0 +1,58 @@
+/* 主题色 */
+.color-theme-primary {
+  background-color: #409EFF;
+}
+
+.color-theme-success {
+  background-color: #67C23A;
+}
+
+.color-theme-warning {
+  background-color: #E6A23C;
+}
+
+.color-theme-danger {
+  background-color: #909399;
+}
+
+.color-theme-info {
+  background-color: #67C23A;
+}
+
+/* 纯色 */
+.color-orange {
+  background-color: #ffa502;
+}
+
+/* 渐变色 */
+.color-gradient-NewLife {
+  background: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+}
+
+.color-gradient-MalibuBeach {
+  background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+}
+
+.color-gradient-TrueSunset {
+  background: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+}
+
+.color-gradient-YoungGrass {
+  background: linear-gradient(to right, #00e3ae 0%, #9be15d 100%);
+}
+
+.color-gradient-HappyUnicorn {
+  background: linear-gradient(to right, #12fff7 0%, #b3ffab 100%);
+}
+
+.color-gradient-GentleCare {
+  background: linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%);
+}
+
+.color-gradient-ColorfulPeach {
+  background: linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%);
+}
+
+.color-gradient-MagicLake {
+  background-image: linear-gradient(to right, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%);
+}

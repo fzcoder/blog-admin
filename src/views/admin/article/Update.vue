@@ -4,8 +4,8 @@
       <div class="header">
         <!-- 面包屑导航区域 -->
         <el-breadcrumb separator-class="el-icon-arrow-right">
-          <el-breadcrumb-item :to="{ path: '/admin' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: '/admin/article' }">文章列表</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/article' }">文章列表</el-breadcrumb-item>
           <el-breadcrumb-item>修改文章</el-breadcrumb-item>
         </el-breadcrumb>
         <!-- 按钮区 -->
@@ -163,7 +163,7 @@ export default {
         return this.$message.error('修改失败！')
       }
       this.$message.success('修改成功！')
-      this.$router.push('/admin/article')
+      this.$router.push('/article')
     },
     // 隐藏所有表单
     hideAll () {

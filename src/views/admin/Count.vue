@@ -282,4 +282,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.container {
+  padding: 20px;
+}
 </style>

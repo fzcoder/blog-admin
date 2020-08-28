@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <el-breadcrumb separator-class="el-icon-arrow-right" v-show="Switch.isHeadVisible">
-      <el-breadcrumb-item :to="{ path: '/admin' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>个人中心</el-breadcrumb-item>
     </el-breadcrumb>
     <el-row :gutter="20">
@@ -139,7 +139,7 @@ export default {
           icon: 'icon-article2-primary-80px',
           introduction: '在该模块中可对文章进行统一管理。',
           style: 'primary',
-          link: '/admin/article'
+          link: '/article'
         },
         {
           id: 2,
@@ -148,7 +148,7 @@ export default {
           icon: 'icon-category3-success-64px',
           introduction: '在该模块中可对文章进行统一管理。',
           style: 'success',
-          link: '/admin/category'
+          link: '/category'
         },
         {
           id: 3,
@@ -157,7 +157,7 @@ export default {
           icon: 'icon-link-warning-64px',
           introduction: '在该模块中可对文章进行统一管理。',
           style: 'warning',
-          link: '/admin/link'
+          link: '/link'
         },
         {
           id: 4,
@@ -166,7 +166,7 @@ export default {
           icon: 'icon-count-primary-64px',
           introduction: '在该模块中可对文章进行统一管理。',
           style: 'primary',
-          link: '/admin/count'
+          link: '/data'
         },
         {
           id: 5,
@@ -175,7 +175,7 @@ export default {
           icon: 'icon-setting-info-64px',
           introduction: '在该模块中可对文章进行统一管理。',
           style: 'info',
-          link: '/admin/setting'
+          link: '/setting'
         }
       ],
       // 开关
@@ -231,6 +231,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.container {
+  padding: 20px;
+}
 .el-breadcrumb {
   margin-bottom: 15px;
   font-size: 15px;

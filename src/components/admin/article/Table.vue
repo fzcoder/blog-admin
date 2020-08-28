@@ -97,7 +97,7 @@ export default {
   methods: {
     // 添加文章
     addArticle () {
-      this.$router.push(`/admin/article/write`)
+      this.$router.push(`/article/write`)
     },
     // 阅读文章
     view (id) {
@@ -106,7 +106,7 @@ export default {
     },
     // 修改文章
     modify (id) {
-      this.$router.push(`/admin/article/update/${id}`)
+      this.$router.push(`/article/update/${id}`)
     },
     // 下载文章
     async download (id) {

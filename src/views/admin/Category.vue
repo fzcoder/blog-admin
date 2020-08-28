@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/admin' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>目录管理</el-breadcrumb-item>
       <el-breadcrumb-item>目录列表</el-breadcrumb-item>
     </el-breadcrumb>
@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.container {
+  padding: 20px;
+}
 .el-breadcrumb {
   margin-bottom: 15px;
   font-size: 15px;

@@ -2,7 +2,7 @@
   <div class="container">
     <!-- 面包屑导航区域 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/admin' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>链接管理</el-breadcrumb-item>
       <el-breadcrumb-item>链接列表</el-breadcrumb-item>
     </el-breadcrumb>
@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.container {
+  padding: 20px;
+}
 .el-breadcrumb {
   margin-bottom: 15px;
   font-size: 15px;

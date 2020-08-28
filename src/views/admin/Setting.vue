@@ -94,6 +94,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.container {
+  padding: 20px;
+}
 .el-breadcrumb {
   margin-bottom: 15px;
   font-size: 15px;
