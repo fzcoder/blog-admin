@@ -10,11 +10,13 @@ const Index = () => import(/* webpackChunkName: "main" */ '@/views/main/Index.vu
 // 个人中心
 const Home = () => import(/* webpackChunkName: "admin-dashboard" */ '@/views/admin/Home.vue')
 // 文章管理
-const Article = () => import(/* webpackChunkName: "admin-article" */ '@/views/admin/Article.vue')
+const Article = () => import(/* webpackChunkName: "admin-article" */ '@/views/main/Article.vue')
 // 创建文章
-const ArticleWrite = () => import(/* webpackChunkName: "admin-article" */ '@/views/admin/article/Write.vue')
+const ArticleWrite = () => import(/* webpackChunkName: "admin-article" */ '@/views/main/article/Write.vue')
 // 修改文章
-const ArticleUpdate = () => import(/* webpackChunkName: "admin-article" */ '@/views/admin/article/Update.vue')
+const ArticleUpdate = () => import(/* webpackChunkName: "admin-article" */ '@/views/main/article/Update.vue')
+// 预览文章
+const ArticlePreview = () => import(/* webpackChunkName: "admin-article" */ '@/views/main/article/Preview.vue')
 // 目录管理
 const Category = () => import(/* webpackChunkName: "admin-category" */ '@/views/admin/Category.vue')
 // 链接管理
@@ -39,7 +41,29 @@ const router = new Router({
       meta: { requireLogin: true },
       children: [
         { path: '', component: Index, meta: { requireLogin: true } },
-        { path: '/article', component: Article, meta: { requireLogin: true } },
+        {
+          path: '/article',
+          component: Article,
+          meta: { requireLogin: true },
+          children: [
+            {
+              path: '',
+              component: () => import(/* webpackChunkName: "admin-article" */ '@/views/main/article/List.vue'),
+              meta: { requireLogin: true }
+            },
+            {
+              path: '/article/draft',
+              component: () => import(/* webpackChunkName: "admin-article" */ '@/views/main/article/Draft.vue'),
+              meta: { requireLogin: true }
+            },
+            {
+              path: '/article/trash',
+              component: () => import(/* webpackChunkName: "admin-article" */ '@/views/main/article/Trash.vue'),
+              meta: { requireLogin: true }
+            }
+          ]
+        },
+        { path: '/article/preview/:id', component: ArticlePreview, meta: { requireLogin: true } },
         { path: '/category', component: Category, meta: { requireLogin: true } },
         { path: '/link', component: Link, meta: { requireLogin: true } },
         { path: '/user', component: Home, meta: { requireLogin: true } },
