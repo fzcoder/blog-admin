@@ -50,8 +50,8 @@ export default {
     return {
       // 导航
       nav: [
+        { name: '个人中心', url: '/#/user' },
         { name: '文章管理', url: '/#/article' },
-        { name: '目录管理', url: '/#/category' },
         { name: '链接管理', url: '/#/link' },
         { name: '统计数据', url: '/#/data' }
       ]
