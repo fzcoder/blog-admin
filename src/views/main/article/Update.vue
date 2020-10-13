@@ -63,8 +63,8 @@
 </template>
 
 <script>
-import Editor from '@/components/admin/article/Editor.vue'
-import Form from '@/components/admin/article/Form.vue'
+import Editor from '@/components/main/article/Editor.vue'
+import Form from '@/components/main/article/Form.vue'
 export default {
   components: {
     Editor,
@@ -147,22 +147,33 @@ export default {
       if (result.status !== 200) {
         return this.$message.error(result.message)
       }
+      // 判断是否为草稿
       if (result.data.status === 0) {
         this.Switch.isDraft = true
       }
-      this.tagList = (result.data.tags || '').split(',')
-      this.form = result.data
-      var url = result.data.cover
-      var file = {
-        name: url.substring(url.lastIndexOf('/') + 1),
-        response: {
-          url: url
-        }
+      // 判断标签是否为空
+      if (result.data.tags === '') {
+        this.tagList = []
+      } else {
+        this.tagList = (result.data.tags || '').split(',')
       }
-      // console.log(file)
-      // 先对列表进行清空
-      this.fileList = []
-      this.fileList.push(file)
+      // 判断封面链接是否为空
+      if (result.data.cover === '') {
+        this.fileList = []
+      } else {
+        var url = result.data.cover
+        var file = {
+          name: url.substring(url.lastIndexOf('/') + 1),
+          response: {
+            url: url
+          }
+        }
+        // console.log(file)
+        // 先对列表进行清空
+        this.fileList = []
+        this.fileList.push(file)
+      }
+      this.form = result.data
     },
     // 修改&发布文章
     async update () {

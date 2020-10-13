@@ -133,7 +133,7 @@ export default {
       let urlList = []
       urlList.push(filename[0])
       this.$http.put('/admin/aliyun/oss/delete', urlList).then(res => {
-        console.log(res)
+        // console.log(res)
       })
     }
   }
