@@ -8,7 +8,7 @@ const Main = () => import(/* webpackChunkName: "main" */ '@/views/Main.vue')
 // 主页
 const Index = () => import(/* webpackChunkName: "main" */ '@/views/main/Index.vue')
 // 个人中心
-const Home = () => import(/* webpackChunkName: "admin-dashboard" */ '@/views/admin/Home.vue')
+const User = () => import(/* webpackChunkName: "admin-dashboard" */ '@/views/main/User.vue')
 // 文章管理
 const Article = () => import(/* webpackChunkName: "admin-article" */ '@/views/main/Article.vue')
 // 创建文章
@@ -22,7 +22,7 @@ const Category = () => import(/* webpackChunkName: "admin-category" */ '@/views/
 // 链接管理
 const Link = () => import(/* webpackChunkName: "admin-link" */ '@/views/admin/Link.vue')
 // 统计数据
-const Count = () => import(/* webpackChunkName: "admin-count" */ '@/views/admin/Count.vue')
+const Data = () => import(/* webpackChunkName: "admin-count" */ '@/views/main/Data.vue')
 // 设置
 const Setting = () => import(/* webpackChunkName: "admin-setting" */ '@/views/admin/Setting.vue')
 // 错误页面
@@ -66,8 +66,51 @@ const router = new Router({
         { path: '/article/preview/:id', component: ArticlePreview, meta: { requireLogin: true } },
         { path: '/category', component: Category, meta: { requireLogin: true } },
         { path: '/link', component: Link, meta: { requireLogin: true } },
-        { path: '/user', component: Home, meta: { requireLogin: true } },
-        { path: '/data', component: Count, meta: { requireLogin: true } },
+        {
+          path: '/user',
+          component: User,
+          meta: { requireLogin: true },
+          children: [
+            {
+              path: '',
+              component: () => import(/* webpackChunkName: "admin-user" */ '@/views/main/user/Home.vue'),
+              meta: { requireLogin: true }
+            },
+            {
+              path: '/profile',
+              component: () => import(/* webpackChunkName: "admin-profile" */ '@/views/main/user/Profile.vue'),
+              meta: { requireLogin: true },
+              children: [
+                {
+                  path: '',
+                  component: () => import(/* webpackChunkName: "admin-profile" */ '@/components/main/profile/BaseInfo.vue'),
+                  meta: { requireLogin: true }
+                },
+                {
+                  path: '/profile/password',
+                  component: () => import(/* webpackChunkName: "admin-profile" */ '@/components/main/profile/Password.vue'),
+                  meta: { requireLogin: true }
+                },
+                {
+                  path: '/profile/email',
+                  component: () => import(/* webpackChunkName: "admin-profile" */ '@/components/main/profile/Email.vue'),
+                  meta: { requireLogin: true }
+                },
+                {
+                  path: '/profile/github',
+                  component: () => import(/* webpackChunkName: "admin-profile" */ '@/components/main/profile/Github.vue'),
+                  meta: { requireLogin: true }
+                },
+                {
+                  path: '/profile/gitee',
+                  component: () => import(/* webpackChunkName: "admin-profile" */ '@/components/main/profile/Gitee.vue'),
+                  meta: { requireLogin: true }
+                }
+              ]
+            }
+          ]
+        },
+        { path: '/data', component: Data, meta: { requireLogin: true } },
         { path: '/setting', component: Setting, meta: { requireLogin: true } }
       ]
     },
