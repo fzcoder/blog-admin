@@ -17,6 +17,7 @@
         </div>
         <div class="lastest">
           <h4>最新发布</h4>
+          <dynamic></dynamic>
         </div>
       </el-col>
     </el-row>
@@ -26,7 +27,11 @@
 <script>
 // 1. 导入 echarts
 import echarts from 'echarts'
+import dynamic from '@/components/main/user/Dynamic.vue'
 export default {
+  components: {
+    dynamic
+  },
   data () {
     return {
       user: {
