@@ -13,13 +13,13 @@
         </el-select>
       </el-form-item>
       -->
-      <el-form-item v-if="form.type !== ''" label="目录等级" prop="level">
+      <el-form-item v-if="form.type === 'article'" label="目录等级" prop="level">
         <el-select placeholder="请选择" v-model="form.level" clearable>
           <el-option v-for="item in select.level" :key="item.value" :value="item.value" :label="item.label"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item v-if="form.level === 1 && form.type !== ''" label="上级目录">
-        <el-select placeholder="请选择" v-model="form.parentId" clearable @visible-change="getParentCategory(form.level, form.type)">
+        <el-select placeholder="请选择" v-model="form.parentId" clearable @visible-change="getParentCategory(form.level, '文章')">
           <el-option v-for="item in select.parent" :key="item.id" :value="item.id" :label="item.name"></el-option>
         </el-select>
       </el-form-item>
@@ -49,6 +49,10 @@ export default {
     visible: {
       type: Boolean,
       default: false
+    },
+    type: {
+      type: String,
+      default: ''
     }
   },
   computed: {
@@ -73,7 +77,7 @@ export default {
         // 上一级目录id
         parentId: '',
         // 类型
-        type: '文章',
+        type: this.type,
         // 描述
         description: '',
         // 图标链接
@@ -122,6 +126,15 @@ export default {
       }
       this.$refs.formRef.validate(async valid => {
         if (valid) {
+          if (this.type === 'article') {
+            this.form.type = '文章'
+          } else if (this.type === 'link') {
+            this.form.level = 0
+            this.form.type = '链接'
+            this.form.parentId = 0
+          } else {
+            return this.$message.error('目录类型错误')
+          }
           const { data: result } = await this.$http.post('/admin/category', this.form)
           if (result.status !== 200) {
             this.$refs['formRef'].resetFields()

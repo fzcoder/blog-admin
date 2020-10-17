@@ -3,7 +3,7 @@
     <!-- 添加目录对话框 -->
     <category-add
       :visible.sync="Switch.isAddDialogVisible"
-      type="article"
+      type="link"
       @submit="handleSubmit"
       @cancel="Switch.isAddDialogVisible = !Switch.isAddDialogVisible"
     ></category-add>
@@ -22,7 +22,7 @@
       @cancel="Switch.isDeleteDialogVisible = !Switch.isDeleteDialogVisible"
     ></category-delete>
     <!-- 主体区域 -->
-    <a class="category-item-link" href="/#/article">
+    <a class="category-item-link" href="/#/link">
       <div class="category-item-content">
         <div class="category-item-info">
           <i class="el-icon-document"></i>
@@ -30,7 +30,11 @@
         </div>
       </div>
     </a>
-    <a class="category-item-link" href="/#/article?category_id=default">
+    <button class="category-item-create-btn" @click="create">
+      <i class="el-icon-circle-plus-outline"></i>
+      <span>新建目录</span>
+    </button>
+    <a class="category-item-link" href="/#/link?category_id=default">
       <div class="category-item-content">
         <div class="category-item-info">
           <i class="el-icon-folder"></i>
@@ -38,50 +42,28 @@
         </div>
       </div>
     </a>
-    <button class="category-item-create-btn" @click="create">
-      <i class="el-icon-circle-plus-outline"></i>
-      <span>新建目录</span>
-    </button>
-    <div v-for="item in list" :key="item.id" >
-      <div class="category-item-divider">
+    <a
+      v-for="item in list"
+      :key="item.id"
+      :href="'/#/link?category_id=' + item.id"
+      class="category-item-link"
+    >
+      <div class="category-item-content">
         <div class="category-item-info">
-          <i class="el-icon-s-unfold"></i>
+          <i class="el-icon-folder"></i>
           <span>{{ item.name }}</span>
         </div>
-        <div class="category-item-btngroup">
-          <button class="item-btn-op" @click="update(item.id)">
-            <i class="el-icon-edit"></i>
-            <span>编辑</span>
-          </button>
-          <button class="item-btn-op" @click="remove(item.id)">
-            <i class="el-icon-delete"></i>
-            <span>删除</span>
-          </button>
+        <div class="category-item-btngroup-2">
+          <el-dropdown size="small" :show-timeout="0" :hide-timeout="150" @command="handleCommand">
+            <i class="el-icon-edit-outline"></i>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item icon="el-icon-edit" :command="'edit,' + item.id">编辑</el-dropdown-item>
+              <el-dropdown-item icon="el-icon-delete" :command="'delete,' + item.id">删除</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
         </div>
       </div>
-      <a
-        v-for="i in item.children"
-        :key="i.id"
-        :href="'/#/article?category_id=' + i.id"
-        class="category-item-link"
-      >
-        <div class="category-item-content">
-          <div class="category-item-info">
-            <i class="el-icon-folder"></i>
-            <span>{{ i.name }}</span>
-          </div>
-          <div class="category-item-btngroup-2">
-            <el-dropdown size="small" :show-timeout="0" :hide-timeout="150" @command="handleCommand">
-              <i class="el-icon-edit-outline"></i>
-              <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item icon="el-icon-edit" :command="'edit,' + i.id">编辑</el-dropdown-item>
-                <el-dropdown-item icon="el-icon-delete" :command="'delete,' + i.id">删除</el-dropdown-item>
-              </el-dropdown-menu>
-            </el-dropdown>
-          </div>
-        </div>
-      </a>
-    </div>
+    </a>
   </div>
 </template>
 
@@ -121,7 +103,7 @@ export default {
     async getCategory () {
       const { data: result } = await this.$http.get('/category/menu', {
         params: {
-          type: '文章'
+          type: '链接'
         }
       })
       this.list = result.data
