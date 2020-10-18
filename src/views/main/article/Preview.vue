@@ -5,13 +5,13 @@
       <i class="el-icon-arrow-up"></i>
     </el-backtop>
     <el-row :gutter="20" type="flex">
-      <el-col :xs="0" :sm="20" :md="18" :lg="5" :xl="10">
+      <el-col :xs="0" :sm="5" :md="6" :lg="5" :xl="5">
         <div class="aside">
           <h4 class="content-title">文章目录</h4>
           <div id="table-of-content"></div>
         </div>
       </el-col>
-      <el-col :xs="24" :sm="20" :md="18" :lg="14" :xl="10">
+      <el-col :xs="24" :sm="18" :md="18" :lg="14" :xl="14">
         <div class="main">
           <!-- 面包屑导航区域 -->
           <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -161,6 +161,12 @@ export default {
     margin: 0 0 10px 0;
   }
   width: 220px;
+}
+.container {
+  width: 100%;
+}
+.el-row {
+  width: inherit;
 }
 </style>
 
