@@ -13,7 +13,7 @@
       <template slot="prepend">https://gitee.com/</template>
     </el-input>
     <div class="btn-group">
-      <el-button type="primary">更新</el-button>
+      <el-button type="primary" @click="update">更新</el-button>
     </div>
   </div>
 </template>
@@ -22,7 +22,37 @@
 export default {
   data () {
     return {
-      username: ''
+      username: '',
+      url: ''
+    }
+  },
+  created () {
+    this.getInfo()
+  },
+  methods: {
+    // 获取信息
+    async getInfo () {
+      const { data: result } = await this.$http.get(`/admin/${window.sessionStorage.getItem('uid')}/gitee`)
+      if (result.status !== 200) {
+        return this.$message.error('获取信息失败')
+      }
+      this.url = result.data.gitee
+      this.username = this.url.split('/')[this.url.split('/').length - 1]
+    },
+    // 更新
+    async update () {
+      this.url = 'https://gitee.com/' + this.username
+      const body = {
+        op: 'replace',
+        path: '/gitee',
+        value: this.url
+      }
+      const { data: result } = await this.$http.patch(`/admin/${window.sessionStorage.getItem('uid')}`, body)
+      if (result.status !== 200) {
+        return this.$message.error(result.message)
+      }
+      this.$message.success(result.message)
+      this.getInfo()
     }
   }
 }
