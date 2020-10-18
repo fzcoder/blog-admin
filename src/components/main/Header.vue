@@ -17,7 +17,7 @@
     <div class="btn-group">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link-icon">
+          <a class="nav-link-icon" href="javascript:;" @click="() => { return this.$message.info('消息功能暂未开启!') }">
             <i class="el-icon-message-solid"></i>
           </a>
         </li>

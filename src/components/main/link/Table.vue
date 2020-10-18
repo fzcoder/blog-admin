@@ -78,8 +78,8 @@
 </template>
 
 <script>
-import UpdateDialog from '@/views/admin/link/Update.vue'
-import DeleteDialog from '@/views/admin/link/Delete.vue'
+import UpdateDialog from '@/views/main/link/Update.vue'
+import DeleteDialog from '@/views/main/link/Delete.vue'
 export default {
   name: 'LinkTable',
   components: {

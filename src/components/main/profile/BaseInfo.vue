@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import Upload from '@/components/admin/common/Upload.vue'
+import Upload from '@/components/main/common/Upload.vue'
 export default {
   components: {
     Upload

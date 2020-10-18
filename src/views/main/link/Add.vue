@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import LinkForm from '@/components/admin/link/Form.vue'
+import LinkForm from '@/components/main/link/Form.vue'
 export default {
   name: 'Form',
   components: {

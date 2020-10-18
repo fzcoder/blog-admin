@@ -26,7 +26,7 @@
 <script>
 import Table from '@/components/main/link/Table.vue'
 import LinkAdd from '@/views/main/link/Add.vue'
-import Search from '@/components/admin/common/Search.vue'
+import Search from '@/components/main/common/Search.vue'
 export default {
   components: {
     'link-table': Table,

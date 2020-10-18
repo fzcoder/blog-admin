@@ -17,8 +17,6 @@ const ArticleWrite = () => import(/* webpackChunkName: "admin-article" */ '@/vie
 const ArticleUpdate = () => import(/* webpackChunkName: "admin-article" */ '@/views/main/article/Update.vue')
 // 预览文章
 const ArticlePreview = () => import(/* webpackChunkName: "admin-article" */ '@/views/main/article/Preview.vue')
-// 目录管理
-const Category = () => import(/* webpackChunkName: "admin-category" */ '@/views/admin/Category.vue')
 // 链接管理
 const Link = () => import(/* webpackChunkName: "admin-link" */ '@/views/main/Link.vue')
 // 统计数据
@@ -64,7 +62,6 @@ const router = new Router({
           ]
         },
         { path: '/article/preview/:id', component: ArticlePreview, meta: { requireLogin: true } },
-        { path: '/category', component: Category, meta: { requireLogin: true } },
         {
           path: '/link',
           component: Link,

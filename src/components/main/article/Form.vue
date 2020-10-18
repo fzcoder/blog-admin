@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import Upload from '@/components/admin/common/Upload.vue'
+import Upload from '@/components/main/common/Upload.vue'
 import CategoryAdd from '@/views/main/category/Add.vue'
 export default {
   name: 'Form',
