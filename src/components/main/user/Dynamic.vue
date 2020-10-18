@@ -51,7 +51,7 @@ export default {
 
 <style lang="less" scoped>
 .list-item {
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   border: 1px solid #DCDFE6;
   margin-bottom: 20px;
