@@ -74,25 +74,29 @@
                   <span> {{ i.createTime }}</span>
                 </p>
                 <!-- 左侧布局 -->
-                <div v-if="i.eventPosition === 'left'">
+                <div  class="dynamic-item-content" v-if="i.eventPosition === 'left'">
                   <el-avatar :src="user.avatar" :size="20"></el-avatar>
                   <a class="dynamic-item-link" href="/#/user">
                     <span style="margin: 0 5px 0 5px; font-weight: bold;">{{ user.nickname }}</span>
                   </a>
                   <el-tag :type="i.eventType" size="mini" effect="dark">{{ i.eventContent }}</el-tag>
                   <span>了</span>
-                  <a class="dynamic-item-link" :href="'/#' + i.prefixLink">{{ i.prefixContent }}</a>
+                  <a v-if="i.prefixLink" class="dynamic-item-link" :href="'/#' + i.prefixLink">
+                    <span v-if="i.prefixContent">{{ i.prefixContent }}</span>
+                    <span v-else>&lt;未命名&gt;</span>
+                  </a>
+                  <span v-if="i.prefixContent && !i.prefixLink">{{ i.suffixContent }}</span>
+                  <span v-if="!i.prefixContent && !i.prefixLink">&lt;未命名&gt;</span>
                   <span v-if="i.suffixContent">到</span>
                   <a v-if="i.suffixLink" class="dynamic-item-link" :href="'/#' + i.suffixLink">
                     <span v-if="i.suffixContent">{{ i.suffixContent }}</span>
                     <span v-else>&lt;未命名&gt;</span>
                   </a>
                   <span v-if="i.suffixContent && !i.suffixLink">{{ i.suffixContent }}</span>
-                  <span v-if="!i.suffixContent && !i.suffixLink">&lt;未命名&gt;</span>
                   <span v-if="i.suffixContent">中</span>
                 </div>
                 <!-- 中间布局 -->
-                <div class="dynamic-item-content-center" v-else>
+                <div class="dynamic-item-content" v-else>
                   <el-avatar :src="user.avatar" :size="20"></el-avatar>
                   <a class="dynamic-item-link" href="/#/user">
                     <span style="margin: 0 5px 0 5px; font-weight: bold;">{{ user.nickname }}</span>
@@ -159,8 +163,8 @@ export default {
         // 请求参数
         params: {
           uid: window.sessionStorage.getItem('uid'),
-          start_date: '2020-01-01',
-          end_date: '2020-10-15'
+          start_date: '',
+          end_date: ''
         },
         // 列表
         list: []
@@ -180,6 +184,11 @@ export default {
     },
     // 获取动态信息
     async getDynamic () {
+      const end = new Date()
+      const start = new Date()
+      start.setTime(start.getTime() - 3600 * 1000 * 24 * 180)
+      this.dynamic.params.start_date = start.getFullYear() + '-' + (start.getMonth() + 1 < 10 ? '0' + (start.getMonth() + 1) : start.getMonth() + 1) + '-' + start.getDate()
+      this.dynamic.params.end_date = end.getFullYear() + '-' + (end.getMonth() + 1 < 10 ? '0' + (end.getMonth() + 1) : end.getMonth() + 1) + '-' + end.getDate()
       const { data: result } = await this.$http.get('/admin/dynamic', { params: this.dynamic.params })
       this.dynamic.list = result.data
     }
@@ -230,7 +239,7 @@ export default {
 .dynamic-item-link:hover {
   color: #409EFF;
 }
-.dynamic-item-content-center {
+.dynamic-item-content {
   .el-avatar {
     padding: 0px;
     margin: 0px;
