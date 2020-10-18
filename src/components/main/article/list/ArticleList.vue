@@ -224,10 +224,12 @@ export default {
     },
     // 下载文章
     async download (id) {
+      // 下载状态
+      var status
       // axios 响应拦截器
       await this.$http.interceptors.response.use(
         (response) => {
-          // console.log(response)
+          status = response.status
           return response
         },
         (error) => {
@@ -237,9 +239,10 @@ export default {
       )
       // 发送请求
       const result = await this.$http.post(`/admin/article/${id}/download`)
-      // 消息提示
-      if (result.status !== 200) {
-        return this.$message.error(result.message)
+      if (status === 200) {
+        this.$message.success('下载成功!')
+      } else {
+        this.$message.error('下载失败!')
       }
       /**
        * 这里是从服务器接收到的文件流（content-type:application/octet-stream）创建blob对象并使用该blob
@@ -266,7 +269,6 @@ export default {
       document.body.removeChild(downloadElement)
       // 释放掉blob对象
       window.URL.revokeObjectURL(href)
-      this.$message.success(result.message)
     }
   }
 }

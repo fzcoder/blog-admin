@@ -4,7 +4,7 @@
     <el-backtop :bottom="100" :right="50" :visibility-height="50">
       <i class="el-icon-arrow-up"></i>
     </el-backtop>
-    <el-row :gutter="0" type="flex">
+    <el-row :gutter="20" type="flex">
       <el-col :xs="0" :sm="20" :md="18" :lg="5" :xl="10">
         <div class="aside">
           <h4 class="content-title">文章目录</h4>
@@ -160,6 +160,7 @@ export default {
   .content-title {
     margin: 0 0 10px 0;
   }
+  width: 220px;
 }
 </style>
 
