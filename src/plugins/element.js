@@ -61,6 +61,7 @@ import { Backtop } from 'element-ui'
 
 // 下拉菜单
 import { Dropdown } from 'element-ui'
+import { DropdownMenu } from 'element-ui'
 import { DropdownItem } from 'element-ui'
 
 Vue.use(Button)
@@ -110,6 +111,7 @@ Vue.use(Timeline)
 Vue.use(TimelineItem)
 Vue.use(Backtop)
 Vue.use(Dropdown)
+Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
 
 // 挂载弹框提示组件

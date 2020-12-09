@@ -2,65 +2,79 @@
   <div class="container">
     <div class="container-content">
       <div class="content-header">
-        <h2 style="margin: 0px;">Frank's Blog</h2>
+        <h2 style="margin: 0px">Frank's Blog</h2>
       </div>
       <div class="content-main">
-        <login class="login-card">
-          <div class="card-header">
-            <i class="el-icon-user-solid"></i>
-            <span>账号密码登录</span>
-          </div>
-          <!-- 登录表单 -->
-          <el-form
-            class="login_form"
-            :model="loginRuleForm"
-            :rules="loginFormRules"
-            ref="loginFormRef"
-          >
-            <el-form-item label="用户名" prop="username">
-              <el-input
-                prefix-icon="el-icon-user"
-                placeholder="请输入用户名"
-                type="text"
-                v-model="loginRuleForm.username"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="密码" prop="password">
-              <el-input
-                prefix-icon="el-icon-lock"
-                placeholder="请输入密码"
-                type="password"
-                show-password
-                v-model="loginRuleForm.password"
-              ></el-input>
-            </el-form-item>
-            <el-form-item label="验证码" prop="code">
-              <div style="display: flex; align-items: center;">
-                <el-input placeholder="请输入邮箱验证码" type="text" v-model="loginRuleForm.code"></el-input>
-                <el-button
-                  type="primary"
-                  plain
-                  round
-                  :disabled="countdown.show"
-                  style="margin-left: 10px;"
-                  @click="getVerificationCode()"
-                >
-                  <span v-show="!countdown.show">获取验证码</span>
-                  <span v-show="countdown.show">还剩{{ countdown.count }}s</span>
-                </el-button>
+        <el-row :gutter="20" type="flex" justify="center">
+          <el-col :xs="22" :sm="16" :md="12" :lg="7" :xl="6">
+            <div class="login-card">
+              <div class="card-header">
+                <i class="el-icon-user-solid"></i>
+                <span>账号密码登录</span>
               </div>
-            </el-form-item>
-          </el-form>
-          <div class="btn-group">
-            <div class="btn-left">
-              <el-button type="text">忘记密码?</el-button>
+              <!-- 登录表单 -->
+              <el-form
+                class="login_form"
+                :model="loginRuleForm"
+                :rules="loginFormRules"
+                ref="loginFormRef"
+              >
+                <el-form-item label="用户名" prop="username">
+                  <el-input
+                    prefix-icon="el-icon-user"
+                    placeholder="请输入用户名"
+                    type="text"
+                    v-model="loginRuleForm.username"
+                  ></el-input>
+                </el-form-item>
+                <el-form-item label="密码" prop="password">
+                  <el-input
+                    prefix-icon="el-icon-lock"
+                    placeholder="请输入密码"
+                    type="password"
+                    show-password
+                    v-model="loginRuleForm.password"
+                  ></el-input>
+                </el-form-item>
+                <el-form-item label="验证码" prop="code">
+                  <div style="display: flex; align-items: center">
+                    <el-input
+                      placeholder="请输入邮箱验证码"
+                      type="text"
+                      v-model="loginRuleForm.code"
+                    ></el-input>
+                    <el-button
+                      type="primary"
+                      plain
+                      round
+                      :disabled="countdown.show"
+                      style="margin-left: 10px"
+                      @click="getVerificationCode()"
+                    >
+                      <span v-show="!countdown.show">获取验证码</span>
+                      <span v-show="countdown.show"
+                        >还剩{{ countdown.count }}s</span
+                      >
+                    </el-button>
+                  </div>
+                </el-form-item>
+              </el-form>
+              <div class="btn-group">
+                <div class="btn-left">
+                  <el-button type="text">忘记密码?</el-button>
+                </div>
+                <div class="btn-right">
+                  <el-button type="primary" round @click="login()"
+                    >登录</el-button
+                  >
+                  <el-button round @click="resetLoginForm('loginFormRef')"
+                    >重置</el-button
+                  >
+                </div>
+              </div>
             </div>
-            <div class="btn-right">
-              <el-button type="primary" round @click="login()">登录</el-button>
-              <el-button round @click="resetLoginForm('loginFormRef')">重置</el-button>
-            </div>
-          </div>
-        </login>
+          </el-col>
+        </el-row>
       </div>
     </div>
   </div>
@@ -192,25 +206,19 @@ export default {
   height: 100%;
   width: 100%;
 }
-
 .container-content {
   padding: 20px;
 }
-
 .content-main {
   padding: 20px;
 }
-
 .login-card {
-  float: right;
-  width: 360px;
   padding: 20px;
-  margin: 3% 2% 0 0;
-  background-color: #ffffff;
+  margin-top: 50px;
+  background-color:rgba(255, 255, 255, 0.85);
   border-radius: 10px;
-  box-shadow: 0px 0px 10px #dcdfe6;
+  box-shadow: 0px 0px 3px #dcdfe6;
 }
-
 .card-header {
   text-align: center;
   padding: 10px;

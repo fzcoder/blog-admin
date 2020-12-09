@@ -23,12 +23,6 @@
                   <span> 文章</span>
                 </div>
               </a>
-              <a class="user-info-nav-link" href="/#/category">
-                <div class="user-info-nav-item">
-                  <i class="el-icon-folder"></i>
-                  <span> 目录</span>
-                </div>
-              </a>
               <a class="user-info-nav-link" href="/#/link">
                 <div class="user-info-nav-item">
                   <i class="el-icon-link"></i>
@@ -74,22 +68,49 @@
               size="large"
               placement="top"
             >
-              <!-- 动态内容 -->
-              <div class="dynamic-item" v-for="(i, idx) in item.content" :key="idx">
+              <div class="dynamic-item" v-for="i in item.content" :key="i.id">
                 <p class="dynamic-item-header">
                   <i class="el-icon-time"></i>
-                  <span> {{ i.create_time }}</span>
+                  <span> {{ i.createTime }}</span>
                 </p>
-                <p class="dynamic-item-content">
-                  <el-avatar :src="user.avatar" size="small"></el-avatar>
-                  <span class="dynamic-item-content-nickname">
-                    {{ user.nickname }}
-                  </span>
-                  <span>
-                    在<el-tag type="primary" size="mini" effect="dark">{{ i.category_name }}</el-tag>中添加了一篇文章
-                  </span>
-                  <el-link :underline="false" :href=" '/#/article/view/' + i.id "># {{ i.title }}</el-link>
-                </p>
+                <!-- 左侧布局 -->
+                <div  class="dynamic-item-content" v-if="i.eventPosition === 'left'">
+                  <el-avatar :src="user.avatar" :size="20"></el-avatar>
+                  <a class="dynamic-item-link" href="/#/user">
+                    <span style="margin: 0 5px 0 5px; font-weight: bold;">{{ user.nickname }}</span>
+                  </a>
+                  <el-tag :type="i.eventType" size="mini" effect="dark">{{ i.eventContent }}</el-tag>
+                  <span>了</span>
+                  <a v-if="i.prefixLink" class="dynamic-item-link" :href="'/#' + i.prefixLink">
+                    <span v-if="i.prefixContent">{{ i.prefixContent }}</span>
+                    <span v-else>&lt;未命名&gt;</span>
+                  </a>
+                  <span v-if="i.prefixContent && !i.prefixLink">{{ i.suffixContent }}</span>
+                  <span v-if="!i.prefixContent && !i.prefixLink">&lt;未命名&gt;</span>
+                  <span v-if="i.suffixContent">到</span>
+                  <a v-if="i.suffixLink" class="dynamic-item-link" :href="'/#' + i.suffixLink">
+                    <span v-if="i.suffixContent">{{ i.suffixContent }}</span>
+                    <span v-else>&lt;未命名&gt;</span>
+                  </a>
+                  <span v-if="i.suffixContent && !i.suffixLink">{{ i.suffixContent }}</span>
+                  <span v-if="i.suffixContent">中</span>
+                </div>
+                <!-- 中间布局 -->
+                <div class="dynamic-item-content" v-else>
+                  <el-avatar :src="user.avatar" :size="20"></el-avatar>
+                  <a class="dynamic-item-link" href="/#/user">
+                    <span style="margin: 0 5px 0 5px; font-weight: bold;">{{ user.nickname }}</span>
+                  </a>
+                  <span>在</span>
+                  <a class="dynamic-item-link" :href="'/#' + i.prefixLink">{{ i.prefixContent }}</a>
+                  <span>中</span>
+                  <el-tag :type="i.eventType" size="mini" effect="dark">{{ i.eventContent }}</el-tag>
+                  <span>了</span>
+                  <a class="dynamic-item-link" :href="'/#' + i.suffixLink">
+                    <span v-if="i.suffixContent">{{ i.suffixContent }}</span>
+                    <span v-else>&lt;未命名&gt;</span>
+                  </a>
+                </div>
               </div>
             </el-timeline-item>
           </el-timeline>
@@ -142,8 +163,8 @@ export default {
         // 请求参数
         params: {
           uid: window.sessionStorage.getItem('uid'),
-          type: 'article',
-          part_num: 1
+          start_date: '',
+          end_date: ''
         },
         // 列表
         list: []
@@ -163,7 +184,12 @@ export default {
     },
     // 获取动态信息
     async getDynamic () {
-      const { data: result } = await this.$http.get('/dynamic', { params: this.dynamic.params })
+      const end = new Date()
+      const start = new Date()
+      start.setTime(start.getTime() - 3600 * 1000 * 24 * 180)
+      this.dynamic.params.start_date = start.getFullYear() + '-' + (start.getMonth() + 1 < 10 ? '0' + (start.getMonth() + 1) : start.getMonth() + 1) + '-' + start.getDate()
+      this.dynamic.params.end_date = end.getFullYear() + '-' + (end.getMonth() + 1 < 10 ? '0' + (end.getMonth() + 1) : end.getMonth() + 1) + '-' + end.getDate()
+      const { data: result } = await this.$http.get('/admin/dynamic', { params: this.dynamic.params })
       this.dynamic.list = result.data
     }
   }
@@ -205,19 +231,21 @@ export default {
   font-size: small;
   color: #303133;
 }
+.dynamic-item-link {
+  text-decoration: none;
+  color: #303133;
+  margin: 0 5px 0 5px;
+}
+.dynamic-item-link:hover {
+  color: #409EFF;
+}
 .dynamic-item-content {
-  padding: 0px;
-  margin: 0px;
-  display: flex;
-  align-items: center;
-  .dynamic-item-content-nickname {
-    font-weight: bold;
-    margin: 0 5px 0 5px;
+  .el-avatar {
+    padding: 0px;
+    margin: 0px;
   }
+  display: inline-flex;
   .el-tag {
-    margin: 0 5px 0 5px;
-  }
-  .el-link {
     margin: 0 5px 0 5px;
   }
 }
