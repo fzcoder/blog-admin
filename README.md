@@ -19,7 +19,7 @@
 #### 1、克隆到本地
 
 ```bash
-$ git clone https://github.com/fzcoder/blog-web.git
+$ git clone https://github.com/fzcoder/blog-admin.git
 ```
 
 #### 2、安装NPM依赖
