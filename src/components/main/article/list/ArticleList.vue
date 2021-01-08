@@ -111,16 +111,20 @@
               size="small"
               @click="openDeleteDialog(scope.row.id)"
             ></el-button>
-            <!-- 下载按钮 -->
-            <el-button
-              type="primary"
-              round
-              icon="el-icon-download"
-              size="small"
-              style="margin-left: 10px"
-              @click="download(scope.row.id)"
-              >下载</el-button
-            >
+            <!-- 下载下拉菜单 -->
+            <el-dropdown @command="download(scope.row.id, $event)" class="downloadDropdown">
+              <el-button type="primary" size="small">
+                下载<i class="el-icon-arrow-down el-icon--right"></i>
+              </el-button>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item :command="1">
+                  <i class="el-icon-download"></i>含文章信息
+                </el-dropdown-item>
+                <el-dropdown-item :command="0">
+                  <i class="el-icon-download"></i>仅文章
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
           </template>
         </el-table-column>
       </el-table>
@@ -223,7 +227,7 @@ export default {
       this.getList()
     },
     // 下载文章
-    async download (id) {
+    async download (id, type) {
       // 下载状态
       var status
       // axios 响应拦截器
@@ -237,8 +241,20 @@ export default {
           return error
         }
       )
+      // 下载配置
+      const config = {
+        withArticleInfo: type === 1,
+        infoFormat: 'YAML',
+        withTitle: true,
+        withCreateTime: true,
+        withUpdateTime: true,
+        withDescription: true,
+        withCoverUrl: true,
+        withCategory: true,
+        withTags: true
+      }
       // 发送请求
-      const result = await this.$http.post(`/admin/article/${id}/download`)
+      const result = await this.$http.post(`/admin/article/${id}/download`, config)
       if (status === 200) {
         this.$message.success('下载成功!')
       } else {
@@ -314,5 +330,8 @@ a:hover {
 }
 .el-pagination {
   margin: 20px 0 20px 0;
+}
+.downloadDropdown {
+  margin: 0 0 0 10px;
 }
 </style>

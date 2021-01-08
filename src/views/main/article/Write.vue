@@ -18,6 +18,7 @@
             accept=".md"
             :before-upload="beforeUpload"
             :on-success="handleSuccess"
+            :on-error="handleError"
             v-show="Switch.formShow[0]"
           >
             <el-button type="primary" plain size="small" icon="el-icon-upload2">
@@ -167,11 +168,16 @@ export default {
     beforeUpload (file) {},
     // 文件上传成功时的钩子，参数为(response, file, fileList)
     handleSuccess (response, file, fileList) {
-      if (response.status !== 200) {
+      /* if (response.status !== 200) {
         return this.$message.error(response.message)
       }
-      this.$message.success(response.message)
-      this.form.contentMd = response.data
+      this.$message.success(response.message) */
+      this.$message.success('上传成功')
+      this.form.contentMd = response
+    },
+    // 文件上传失败时的钩子
+    handleError (err, file, fileList) {
+      this.$message.error(err)
     },
     // 提交文章
     async submit () {
