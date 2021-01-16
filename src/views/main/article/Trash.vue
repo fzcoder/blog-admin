@@ -37,13 +37,17 @@
         <el-table-column label="文章标题">
           <template slot-scope="scope">
             <a :href="'/#/article/preview/' + scope.row.id">
-              <span v-if="scope.row.category">{{ scope.row.category.categoryName }}</span>
+              <span v-if="scope.row.title">{{ scope.row.title }}</span>
             </a>
           </template>
         </el-table-column>
         <el-table-column label="创建日期" prop="createTime" width="160">
         </el-table-column>
-        <el-table-column label="所属目录" prop="category.categoryName" width="120">
+        <el-table-column label="所属目录" width="120">
+          <template slot-scope="scope">
+            <span v-if="scope.row.category">{{ scope.row.category.categoryName }}</span>
+            <span v-else>&lt;未选择&gt;</span>
+          </template>
         </el-table-column>
         <el-table-column label="操作" width="200">
           <template slot-scope="scope">
@@ -73,9 +77,9 @@
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      :current-page="params.pageNum"
+      :current-page="params.page_num"
       :page-sizes="[5, 10, 15, 20]"
-      :page-size="params.pageSize"
+      :page-size="params.page_size"
       layout="total, sizes, prev, pager, next, jumper"
       :total="total"
       background
@@ -91,8 +95,8 @@ export default {
       params: {
         uid: window.sessionStorage.getItem('uid'),
         key: '',
-        pageNum: 1,
-        pageSize: 10,
+        page_num: 1,
+        page_size: 10,
         status: 2,
         order_by: 'date',
         is_reverse: true
@@ -110,12 +114,12 @@ export default {
   methods: {
     // 监听pageSize改变的事件
     handleSizeChange (newSize) {
-      this.params.pageSize = newSize
+      this.params.page_size = newSize
       this.getList()
     },
     // 监听页码值改变的事件
     handleCurrentChange (newPage) {
-      this.params.pageNum = newPage
+      this.params.page_num = newPage
       this.getList()
     },
     // 获取文章列表
@@ -125,8 +129,8 @@ export default {
       })
       this.list = result.data.records
       this.total = result.data.total
-      this.params.pageNum = result.data.current
-      this.params.pageSize = result.data.size
+      this.params.page_num = result.data.current
+      this.params.page_size = result.data.size
     },
     // 打开删除标签对话框
     openDeleteDialog (id) {

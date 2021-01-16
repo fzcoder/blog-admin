@@ -22,7 +22,7 @@ export default {
       type: Boolean,
       default: false
     },
-    id: Number
+    id: String
   },
   computed: {
     visible_: {

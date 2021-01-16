@@ -7,11 +7,11 @@
           <p class="item-intro">{{ item.introduction }}</p>
           <div class="item-footer">
             <div class="item-tags">
-              <el-tag size="small" v-for="tag in item.tags" :key="tag">{{ tag }}</el-tag>
+              <el-tag size="small" v-for="tag in item.tags" :key="tag.tagId">{{ tag.tagName }}</el-tag>
             </div>
             <div class="item-date">
               <i class="el-icon-time"></i>
-              <span>{{ item.date }}</span>
+              <span>{{ item.createTime }}</span>
             </div>
           </div>
         </div>
@@ -27,11 +27,13 @@ export default {
     return {
       list: [],
       params: {
+        uid: window.sessionStorage.getItem('uid'),
         key: '',
         page_num: 1,
         page_size: 4,
-        is_reverse: true,
-        type: 'dynamic'
+        status: 1,
+        order_by: 'date',
+        is_reverse: true
       }
     }
   },
@@ -40,7 +42,7 @@ export default {
   },
   methods: {
     async getList () {
-      const { data: result } = await this.$http.get('/article', {
+      const { data: result } = await this.$http.get('/admin/article', {
         params: this.params
       })
       this.list = result.data.records

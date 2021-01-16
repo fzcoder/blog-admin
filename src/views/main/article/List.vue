@@ -73,12 +73,12 @@ export default {
   methods: {
     // 监听pageSize改变的事件
     handleSizeChange (newSize) {
-      this.params.pageSize = newSize
+      this.params.page_size = newSize
       this.getList()
     },
     // 监听页码值改变的事件
     handleCurrentChange (newPage) {
-      this.params.pageNum = newPage
+      this.params.page_num = newPage
       this.getList()
     },
     // 获取文章列表
@@ -88,8 +88,8 @@ export default {
       })
       this.list = result.data.records
       this.total = result.data.total
-      this.params.pageNum = result.data.current
-      this.params.pageSize = result.data.size
+      this.params.page_num = result.data.current
+      this.params.page_size = result.data.size
     }
   }
 }

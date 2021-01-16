@@ -3,6 +3,7 @@
     <!-- 添加目录对话框 -->
     <category-add
       :visible.sync="Switch.isCategoryAddDialogVisible"
+      type="article"
       @submit="handleCategorySubmit"
       @cancel="Switch.isCategoryAddDialogVisible = !Switch.isCategoryAddDialogVisible"
     ></category-add>
@@ -18,6 +19,7 @@
           :props="{ expandTrigger: 'hover', value: 'id', label: 'name', emitPath: false }"
           :show-all-levels="false"
           clearable
+          placeholder="请选择所属目录"
           @visible-change="getCategoryList()"
         ></el-cascader>
         <el-button
@@ -28,6 +30,7 @@
         >新建</el-button>
       </el-form-item>
       <el-form-item label="文章标签">
+        <!--
         <el-tag
           v-for="tag in tagList"
           :key="tag"
@@ -45,6 +48,23 @@
           @blur="handleInputConfirm"
         ></el-input>
         <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+        -->
+        <el-select
+          v-model="form.tags"
+          multiple
+          filterable
+          allow-create
+          default-first-option
+          placeholder="请选择或输入文章标签"
+          @visible-change="getTagList"
+          style="width: 450px;">
+          <el-option
+            v-for="item in select.tags"
+            :key="item.tagName"
+            :label="item.tagName"
+            :value="item.tagName">
+          </el-option>
+        </el-select>
       </el-form-item>
       <el-form-item label="封面">
         <!-- 上传组件 -->
@@ -84,13 +104,6 @@ export default {
       type: Object,
       default: () => ({})
     },
-    // 标签列表
-    'tag-list': {
-      type: Array,
-      default: () => {
-        return []
-      }
-    },
     // 上传的文件列表
     'file-list': {
       type: Array,
@@ -101,6 +114,7 @@ export default {
   },
   created () {
     this.getCategoryList()
+    this.getTagList()
   },
   data () {
     return {
@@ -147,7 +161,9 @@ export default {
       // 选择器
       select: {
         // 目录
-        category: []
+        category: [],
+        // 标签
+        tags: []
       },
       // 开关
       Switch: {
@@ -156,22 +172,26 @@ export default {
         previewCover: false,
         // 是否显示添加目录对话框
         isCategoryAddDialogVisible: false
-      },
+      }
+      /* ,
       // 暂存
       temp: {
         // 当前的标签列表
         tags: [],
         // 新建标签的输入值
         inputValue: ''
-      }
+      } */
     }
   },
   methods: {
-    // 标签清除事件
-    handleTagClose (tag) {
-      this.$emit('remove-tag', tag)
+    /* handleTagChange (render) {
+      this.$emit('change-tag', this.list.tags)
     },
-    // 打开标签输入框
+    // 标签清除事件
+    handleTagRemove (tag) {
+      this.$emit('remove-tag', this.list.tags)
+    }, */
+    /* // 打开标签输入框
     showInput () {
       this.Switch.inputVisible = true
       this.$nextTick(_ => {
@@ -186,7 +206,7 @@ export default {
       }
       this.Switch.inputVisible = false
       this.temp.inputValue = ''
-    },
+    }, */
     // 处理图片上传成功事件
     handleUploadSuccess (response) {
       this.$message.success('上传成功!')
@@ -205,6 +225,11 @@ export default {
         return this.$message.error(result.message)
       }
       this.select.category = result.data
+    },
+    // 获取标签列表
+    async getTagList () {
+      const { data: result } = await this.$http.get('/admin/tag/list')
+      this.select.tags = result.data
     },
     // 处理添加目录事件
     handleCategorySubmit () {

@@ -77,9 +77,6 @@
       <Form
         v-show="Switch.formShow[1]"
         :form="form"
-        :tag-list="tagList"
-        @add-tag="handleAddTag"
-        @remove-tag="handleRemoveTag"
         @upload-img="handleUploadImage"
         @file-remove="handleFileRemove"
       ></Form>
@@ -115,7 +112,7 @@ export default {
         // 目录id
         categoryId: '',
         // 标签
-        tags: '',
+        tags: [],
         // 封面链接
         cover: '',
         // html格式内容
@@ -126,7 +123,7 @@ export default {
         status: 1
       },
       // 标签列表
-      tagList: [],
+      // tagList: [],
       // 开关
       Switch: {
         preStepBtn: false,
@@ -143,14 +140,15 @@ export default {
     }
   },
   methods: {
-    // 处理添加标签事件
-    handleAddTag (value) {
-      this.tagList.push(value)
+    // 处理标签变化事件
+    /* handleChangeTag (value) {
+      this.form.tags = value
     },
-    // 处理删除标签事件
+    // 处理标签移除事件
     handleRemoveTag (value) {
-      this.tagList.splice(this.tagList.indexOf(value), 1)
-    },
+      // this.tagList.splice(this.tagList.indexOf(value), 1)
+      this.form.tags = value
+    }, */
     // 处理上传封面事件
     handleUploadImage (response) {
       this.form.cover = response.url
@@ -181,7 +179,8 @@ export default {
     },
     // 提交文章
     async submit () {
-      this.form.tags = this.tagList.toString()
+      // this.form.tags = this.tagList.toString()
+      // console.log(this.form)
       const { data: result } = await this.$http.post(
         '/admin/article',
         this.form
@@ -194,7 +193,7 @@ export default {
     },
     // 保存为草稿
     async save () {
-      this.form.tags = this.tagList.toString()
+      // this.form.tags = this.tagList.toString()
       this.form.status = 0
       const { data: result } = await this.$http.post(
         '/admin/article',

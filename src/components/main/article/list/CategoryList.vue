@@ -109,8 +109,8 @@ export default {
         // 是否显示添加目录对话框
         isDeleteDialogVisible: false
       },
-      updateCategoryId: 0,
-      deleteCategoryId: 0
+      updateCategoryId: '',
+      deleteCategoryId: ''
     }
   },
   created () {
@@ -144,10 +144,10 @@ export default {
     handleCommand (command) {
       var arr = command.split(',')
       if (arr[0] === 'edit') {
-        return this.update(parseInt(arr[1]))
+        return this.update(arr[1])
       }
       if (arr[0] === 'delete') {
-        return this.remove(parseInt(arr[1]))
+        return this.remove(arr[1])
       }
     },
     // 处理添加事件

@@ -25,7 +25,7 @@
           <div
             id="article-content-html"
             class="markdown-body"
-            v-html="article.content_html"
+            v-html="article.contentHtml"
           ></div>
         </div>
       </el-col>
@@ -54,9 +54,11 @@ export default {
   methods: {
     // 获取文章
     async getArticle () {
-      const { data: result } = await this.$http.get(
-        `/article/${this.$route.params.id}`
-      )
+      const { data: result } = await this.$http.get('/admin/article/view', {
+        params: {
+          'aid': this.$route.params.id
+        }
+      })
       this.article = result.data
     },
     // 创建目录树
@@ -161,6 +163,8 @@ export default {
     margin: 0 0 10px 0;
   }
   width: 220px;
+  height: 650px;
+  overflow: auto;
 }
 .container {
   width: 100%;

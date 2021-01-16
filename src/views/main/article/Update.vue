@@ -51,10 +51,7 @@
       <Form
         v-show="Switch.formShow[1]"
         :form="form"
-        :tag-list="tagList"
         :file-list="fileList"
-        @add-tag="handleAddTag"
-        @remove-tag="handleRemoveTag"
         @upload-img="handleUploadImage"
         @file-remove="handleFileRemove"
       ></Form>
@@ -83,7 +80,7 @@ export default {
         // 目录id
         categoryId: '',
         // 标签
-        tags: '',
+        tags: [],
         // 封面链接
         cover: '',
         // html格式内容
@@ -117,14 +114,15 @@ export default {
     this.getArticle()
   },
   methods: {
-    // 处理添加标签事件
-    handleAddTag (value) {
-      this.tagList.push(value)
+    // 处理标签变化事件
+    /* handleChangeTag (value) {
+      this.form.tags = value
     },
-    // 处理删除标签事件
+    // 处理标签移除事件
     handleRemoveTag (value) {
-      this.tagList.splice(this.tagList.indexOf(value), 1)
-    },
+      // this.tagList.splice(this.tagList.indexOf(value), 1)
+      this.form.tags = value
+    }, */
     // 处理文章内容修改
     handleContentChange (value, render) {
       // 更新HTML格式的文章内容
@@ -141,9 +139,11 @@ export default {
     },
     // 获取文章信息
     async getArticle () {
-      const { data: result } = await this.$http.get(
-        '/admin/article/' + this.$route.params.id
-      )
+      const { data: result } = await this.$http.get('/admin/article/form', {
+        params: {
+          'aid': this.$route.params.id
+        }
+      })
       if (result.status !== 200) {
         return this.$message.error(result.message)
       }
@@ -152,11 +152,11 @@ export default {
         this.Switch.isDraft = true
       }
       // 判断标签是否为空
-      if (result.data.tags === '') {
+      /* if (result.data.tags === '') {
         this.tagList = []
       } else {
         this.tagList = (result.data.tags || '').split(',')
-      }
+      } */
       // 判断封面链接是否为空
       if (result.data.cover === '') {
         this.fileList = []
@@ -177,7 +177,7 @@ export default {
     },
     // 修改&发布文章
     async update () {
-      this.form.tags = this.tagList.toString()
+      // this.form.tags = this.tagList.toString()
       var message = '修改'
       if (this.Switch.isDraft) {
         this.form.status = 1
@@ -192,7 +192,7 @@ export default {
     },
     // 保存草稿
     async save () {
-      this.form.tags = this.tagList.toString()
+      // this.form.tags = this.tagList.toString()
       const { data: result } = await this.$http.put('/admin/article', this.form)
       if (result.status !== 200) {
         return this.$message.error('保存失败！')

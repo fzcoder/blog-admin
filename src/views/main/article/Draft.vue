@@ -84,9 +84,9 @@
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      :current-page="params.pageNum"
+      :current-page="params.page_num"
       :page-sizes="[5, 10, 15, 20]"
-      :page-size="params.pageSize"
+      :page-size="params.page_size"
       layout="total, sizes, prev, pager, next, jumper"
       :total="total"
       background
@@ -102,8 +102,8 @@ export default {
       params: {
         uid: window.sessionStorage.getItem('uid'),
         key: '',
-        pageNum: 1,
-        pageSize: 10,
+        page_num: 1,
+        page_size: 10,
         status: 0,
         order_by: 'date',
         is_reverse: true
@@ -121,12 +121,12 @@ export default {
   methods: {
     // 监听pageSize改变的事件
     handleSizeChange (newSize) {
-      this.params.pageSize = newSize
+      this.params.page_size = newSize
       this.getList()
     },
     // 监听页码值改变的事件
     handleCurrentChange (newPage) {
-      this.params.pageNum = newPage
+      this.params.page_num = newPage
       this.getList()
     },
     // 获取文章列表
@@ -136,8 +136,8 @@ export default {
       })
       this.list = result.data.records
       this.total = result.data.total
-      this.params.pageNum = result.data.current
-      this.params.pageSize = result.data.size
+      this.params.page_num = result.data.current
+      this.params.page_size = result.data.size
     },
     // 编辑草稿
     edit (id) {
