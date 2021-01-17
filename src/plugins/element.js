@@ -35,7 +35,10 @@ import { Tag } from 'element-ui'
 import { Image } from 'element-ui'
 import { Select } from 'element-ui'
 import { Option } from 'element-ui'
+// 对话框
 import { Dialog } from 'element-ui'
+// 弹出框
+import { Popover } from 'element-ui'
 import { Divider } from 'element-ui'
 import { Tabs } from 'element-ui'
 import { TabPane } from 'element-ui'
@@ -113,6 +116,7 @@ Vue.use(Backtop)
 Vue.use(Dropdown)
 Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
+Vue.use(Popover)
 
 // 挂载弹框提示组件
 Vue.prototype.$message = Message

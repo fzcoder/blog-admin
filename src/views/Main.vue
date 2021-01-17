@@ -29,6 +29,7 @@ export default {
   overflow-y: auto;
   z-index: 10;
   box-shadow: 0px 0px 3px #000;
+  min-width: 992px;
 }
 main {
   width: 100%;

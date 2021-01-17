@@ -26,7 +26,7 @@
       <div class="category-item-content">
         <div class="category-item-info">
           <i class="el-icon-document"></i>
-          <span>所有列表</span>
+          <span>所有文章</span>
         </div>
       </div>
     </a>
@@ -171,7 +171,7 @@ export default {
 
 <style lang="less" scoped>
 .category-list-container {
-  height: 700px;
+  height: inherit;
   overflow:auto;
 }
 .category-item-link {

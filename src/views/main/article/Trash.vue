@@ -167,6 +167,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.article-draft {
+  padding: 20px;
+}
 .el-breadcrumb {
   margin: 0 0 20px 0;
 }

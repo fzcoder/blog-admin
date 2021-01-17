@@ -1,5 +1,13 @@
 <template>
   <div class="article-list-container">
+    <!-- 面包屑导航区域 -->
+    <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/article' }"
+        >文章管理</el-breadcrumb-item
+      >
+      <el-breadcrumb-item>文章列表</el-breadcrumb-item>
+    </el-breadcrumb>
     <!-- 搜索区 -->
     <div class="seach-content">
       <div class="btn-group">
@@ -49,7 +57,7 @@
           >
         </span>
       </el-dialog>
-      <el-table :data="list" style="width: 100%">
+      <el-table :data="list" style="width: 100%" :height="style.table.height">
         <el-table-column type="selection" width="55" v-if="false"> </el-table-column>
         <el-table-column type="expand">
           <template slot-scope="props">
@@ -162,17 +170,27 @@ export default {
       // 控制确认删除弹出框的显示与隐藏
       isDeleteDialogVisible: false,
       // 要删除的文章id
-      deleteArticleId: ''
+      deleteArticleId: '',
+      style: {
+        table: {
+          height: ''
+        }
+      }
     }
   },
   created () {
     this.getList()
+    this.init()
   },
   watch: {
     // 监听$route中的query值变化
     '$route': 'handleQueryUpdate'
   },
   methods: {
+    init () {
+      // 初始化
+      this.style.table.height = (document.body.clientHeight - 240) + 'px'
+    },
     handleQueryUpdate () {
       this.params.category_id = this.$route.query.category_id
       this.getList()
@@ -298,6 +316,9 @@ a {
 a:hover {
   color: #409eff;
 }
+.el-breadcrumb {
+  margin: 0px 0px 20px 0px;
+}
 .seach-content {
   margin: 0 0 20px 0;
   display: flex;
@@ -329,7 +350,7 @@ a:hover {
   width: 275px;
 }
 .el-pagination {
-  margin: 20px 0 20px 0;
+  margin: 20px 0 0 0;
 }
 .downloadDropdown {
   margin: 0 0 0 10px;
