@@ -1,6 +1,6 @@
 <template>
   <div class="main-article-list">
-    <el-row :gutter="20" type="flex" justify="center">
+    <el-row :gutter="0" type="flex" justify="center">
       <el-col :xs="0" :sm="6" :md="5" :lg="4" :xl="4">
         <div class="category-content">
           <!-- 目录列表 -->
@@ -55,11 +55,12 @@ export default {
   width: 100%;
 }
 .category-content {
-  position: fixed;
-  width: inherit;
-  z-index: 100px;
+  width: 100%;
 }
 .article-list-content {
   padding: 20px;
+}
+.nav-content {
+  padding: 20px 20px 20px 0;
 }
 </style>

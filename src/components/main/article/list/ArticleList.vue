@@ -325,6 +325,9 @@ a:hover {
   align-items: center;
   justify-content: space-between;
 }
+.btn-group {
+  display: inline-flex;
+}
 .input-wrapper {
   input {
     border: none;
@@ -348,6 +351,8 @@ a:hover {
   padding: 5px 5px 5px 10px;
   border-radius: 20px;
   width: 275px;
+  min-width: 275px;
+  display: inline-flex;
 }
 .el-pagination {
   margin: 20px 0 0 0;

@@ -1,6 +1,6 @@
 <template>
   <div class="nav-container">
-    <h4>功能</h4>
+    <h4 style="margin: 0 0 20px 0;">功能</h4>
     <a class="link-card" href="/#/article/draft">
       <div class="link-card-content color-gradient-HappyUnicorn">
         <i class="el-icon-edit"></i>

@@ -1,6 +1,6 @@
 <template>
   <!-- 添加目录对话框 -->
-  <el-dialog title="添加目录" :visible.sync="visible_" width="30%" :show-close="false">
+  <el-dialog title="添加目录" :visible.sync="visible_" width="450px" :show-close="false">
     <!-- 内容主体区域 -->
     <el-form :model="form" :rules="rules" ref="formRef">
       <el-form-item label="目录名称" prop="name">

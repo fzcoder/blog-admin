@@ -1,5 +1,5 @@
 <template>
-  <el-dialog title="删除目录" :visible.sync="visible_" width="30%" :show-close="false">
+  <el-dialog title="删除目录" :visible.sync="visible_" width="450px" :show-close="false">
     <!-- 内容主体区域 -->
     <span>确定删除该目录？</span>
     <!-- 底部区域 -->
