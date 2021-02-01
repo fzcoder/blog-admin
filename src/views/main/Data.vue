@@ -13,7 +13,7 @@
         <div class="contribution">
           <h4 style="margin-top: 0px;">创作度</h4>
           <div id="contribution-chart" style="width: 750px; height: 180px;"></div>
-          <span>注：创作度是根据发布文章的数量来进行计算的，每发布一篇文章，贡献度加1。</span>
+          <span>注：创作度是根据发布文章的数量来进行计算的，每发布一篇文章，创作度加1。</span>
         </div>
       </el-col>
     </el-row>
