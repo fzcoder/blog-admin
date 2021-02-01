@@ -7,8 +7,6 @@ const Login = () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
 const Main = () => import(/* webpackChunkName: "main" */ '@/views/Main.vue')
 // 主页
 const Index = () => import(/* webpackChunkName: "main" */ '@/views/main/Index.vue')
-// 个人中心
-const User = () => import(/* webpackChunkName: "admin-dashboard" */ '@/views/main/User.vue')
 // 文章管理
 const Article = () => import(/* webpackChunkName: "admin-article" */ '@/views/main/Article.vue')
 // 创建文章
@@ -19,10 +17,10 @@ const ArticleUpdate = () => import(/* webpackChunkName: "admin-article" */ '@/vi
 const ArticlePreview = () => import(/* webpackChunkName: "admin-article" */ '@/views/main/article/Preview.vue')
 // 链接管理
 const Link = () => import(/* webpackChunkName: "admin-link" */ '@/views/main/Link.vue')
+// 个人中心
+const User = () => import(/* webpackChunkName: "main" */ '@/views/main/User.vue')
 // 统计数据
 const Data = () => import(/* webpackChunkName: "admin-count" */ '@/views/main/Data.vue')
-// 设置
-const Setting = () => import(/* webpackChunkName: "admin-setting" */ '@/views/main/Setting.vue')
 // 错误页面
 const NotFound = () => import(/* webpackChunkName: "404" */ '@/views/404.vue')
 
@@ -74,18 +72,12 @@ const router = new Router({
             }
           ]
         },
-        {
-          path: '/user',
+        { path: '/profile',
           component: User,
           meta: { requireLogin: true },
           children: [
             {
               path: '',
-              component: () => import(/* webpackChunkName: "admin-user" */ '@/views/main/user/Home.vue'),
-              meta: { requireLogin: true }
-            },
-            {
-              path: '/profile',
               component: () => import(/* webpackChunkName: "admin-profile" */ '@/views/main/user/Profile.vue'),
               meta: { requireLogin: true },
               children: [
@@ -118,24 +110,7 @@ const router = new Router({
             }
           ]
         },
-        { path: '/data', component: Data, meta: { requireLogin: true } },
-        {
-          path: '/setting',
-          component: Setting,
-          meta: { requireLogin: true },
-          children: [
-            {
-              path: '',
-              component: () => import(/* webpackChunkName: "admin-setting" */ '@/views/main/setting/BaseInfo.vue'),
-              meta: { requireLogin: true }
-            },
-            {
-              path: '/setting/carousel',
-              component: () => import(/* webpackChunkName: "admin-setting" */ '@/views/main/setting/Carousel.vue'),
-              meta: { requireLogin: true }
-            }
-          ]
-        }
+        { path: '/data', component: Data, meta: { requireLogin: true } }
       ]
     },
     // 文章编辑页面

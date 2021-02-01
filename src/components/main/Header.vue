@@ -15,18 +15,6 @@
       </ul>
     </div>
     <div class="btn-group">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link-icon" href="javascript:;" @click="() => { return this.$message.info('消息功能暂未开启!') }">
-            <i class="el-icon-message-solid"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link-icon" href="/#/setting">
-            <i class="el-icon-s-tools"></i>
-          </a>
-        </li>
-      </ul>
       <el-button
         class="btn-group-item"
         type="primary"
@@ -50,7 +38,6 @@ export default {
     return {
       // 导航
       nav: [
-        { name: '个人中心', url: '/#/user' },
         { name: '文章管理', url: '/#/article' },
         { name: '链接管理', url: '/#/link' },
         { name: '统计数据', url: '/#/data' }
