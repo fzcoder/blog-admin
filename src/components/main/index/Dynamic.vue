@@ -15,7 +15,7 @@
           <div class="dynamic-item-header">
             <div class="item-author">
               <el-avatar :src="i.author.avatar" :size="24"></el-avatar>
-              <a class="base-link" href="/#/home">
+              <a class="base-link" href="/#/profile">
                 <span>{{ i.author.nickname }}</span>
               </a>
             </div>
