@@ -4,15 +4,13 @@
 
 ### 一、项目简介
 
-该项目为个人博客网站后台管理端端，采用 [Vue](https://github.com/vuejs/vue) 框架编写，集成了[vue router](https://github.com/vuejs/vue-router) 和 [axios](https://github.com/axios/axios)，并且采用 [element](https://github.com/ElemeFE/element) 作为UI组件库。
+该项目为个人博客网站后台管理端，采用 [Vue](https://github.com/vuejs/vue) 框架编写，集成了[vue router](https://github.com/vuejs/vue-router) 和 [axios](https://github.com/axios/axios)，并且采用 [element](https://github.com/ElemeFE/element) 作为UI组件库。
 
 项目的服务端地址为: [https://github.com/fzcoder/blog-server](https://github.com/fzcoder/blog-server)
 
-项目的 Web 端地址为: [https://github.com/fzcoder/blog-web](https://github.com/fzcoder/blog-web)
-
 ### 二、功能特性
 
-详见`Release`版本说明。
+本项目自`v2.0`版本起将支持在下载文章时添加一些静态博客（如：[hexo](https://github.com/hexojs/hexo)、[hugo](https://github.com/gohugoio/hugo) 等）所需要的一些头部信息，方便配合静态博客。关于本项目更多的功能特性，请详见 [Release](https://github.com/fzcoder/blog-server/releases) 版本说明。
 
 ### 三、安装部署
 
