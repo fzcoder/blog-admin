@@ -114,7 +114,7 @@ export default {
   methods: {
     // 下一步操作
     async next () {
-      const { data: result } = await this.$http.post('/verify/check', null, {
+      const { data: result } = await this.$http.post('/auth/verify/check', null, {
         params: {
           key: window.sessionStorage.getItem('uid'),
           value: this.checkCode
@@ -146,7 +146,7 @@ export default {
     },
     // 获取验证码
     async getCode () {
-      const { data: result } = await this.$http.get('/verify/update', {
+      const { data: result } = await this.$http.get('/auth/verify/update', {
         params: { id: window.sessionStorage.getItem('uid') }
       })
       if (result.status !== 200) {
@@ -156,7 +156,7 @@ export default {
     },
     // 获取激活码
     async getActiveCode () {
-      const { data: result } = await this.$http.get('/verify/active', {
+      const { data: result } = await this.$http.get('/auth/verify/active', {
         params: { to: this.updateEmailForm.email }
       })
       if (result.status !== 200) {

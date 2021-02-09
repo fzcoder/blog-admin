@@ -29,6 +29,9 @@
       <el-form-item label="座右铭">
         <el-input v-model="form.update.info.motto" clearable style="width: 500px;"></el-input>
       </el-form-item>
+      <el-form-item label="个人主页">
+        <el-input v-model="form.update.info.home_page" clearable style="width: 500px;"></el-input>
+      </el-form-item>
       <el-form-item label="简介">
         <el-input
           v-model="form.update.info.introduction"
@@ -39,7 +42,7 @@
       </el-form-item>
     </el-form>
     <div class="button-area" style="display: flex; justify-content: flex-start; margin-top: 15px;">
-      <el-button size="small" type="success" round icon="el-icon-check" @click="updateInfo()">修改</el-button>
+      <el-button size="small" type="success" round icon="el-icon-check" @click="updateInfo()">更新</el-button>
       <el-button size="small" type="primary" round icon="el-icon-refresh" @click="getUserInfo()">还原</el-button>
     </div>
   </div>
@@ -62,7 +65,8 @@ export default {
             avatar: '',
             nickname: '',
             motto: '',
-            introduction: ''
+            introduction: '',
+            home_page: ''
           }
         }
       },
@@ -71,7 +75,8 @@ export default {
         nickname: '',
         avatar: '',
         motto: '',
-        introduction: ''
+        introduction: '',
+        home_page: ''
       },
       // 已上传文件列表
       fileList: []
@@ -110,7 +115,8 @@ export default {
         id: window.sessionStorage.getItem('uid'),
         nickname: this.form.update.info.nickname,
         motto: this.form.update.info.motto,
-        introduction: this.form.update.info.introduction
+        introduction: this.form.update.info.introduction,
+        homePage: this.form.update.info.home_page
       })
       if (result.status !== 200) {
         return this.$message.error(result.message)

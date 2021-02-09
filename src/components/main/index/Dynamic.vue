@@ -2,7 +2,7 @@
   <div class="dynamic">
     <h4 class="block-title">动态</h4>
     <!-- 时间线 -->
-    <el-timeline v-infinite-scroll="load">
+    <el-timeline>
       <el-timeline-item
         v-for="(item, index) in dynamic.list"
         :key="index"

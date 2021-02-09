@@ -62,7 +62,7 @@ export default {
   methods: {
     // 获取验证码
     async getCode () {
-      const { data: result } = await this.$http.get('/verify/update', {
+      const { data: result } = await this.$http.get('/auth/verify/update', {
         params: { id: window.sessionStorage.getItem('uid') }
       })
       if (result.status !== 200) {
@@ -72,16 +72,21 @@ export default {
     },
     // 修改密码
     async updatePassword () {
-      const { data: result } = await this.$http.put(
-        '/admin/' + window.sessionStorage.getItem('uid') + '/password',
-        this.updatePasswordForm
-      )
-      if (result.status !== 200) {
-        return this.$message.error(result.message)
-      }
-      this.$message.success(result.message)
-      window.sessionStorage.clear()
-      this.$router.push('/login')
+      this.$refs.updatePasswordFormRef.validate(async (valid) => {
+        // 表单验证通过
+        if (valid) {
+          const { data: result } = await this.$http.put(
+            '/admin/' + window.sessionStorage.getItem('uid') + '/password',
+            this.updatePasswordForm
+          )
+          if (result.status !== 200) {
+            return this.$message.error(result.message)
+          }
+          this.$message.success(result.message)
+          window.sessionStorage.clear()
+          this.$router.push('/login')
+        }
+      })
     },
     // 取消修改密码
     cancelUpdatePassword (refName) {
